@@ -6,10 +6,10 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
-		<link rel="stylesheet" href="https://volbil.github.io/business-tycoon/business-tycoon.min.css">
-		<link rel="stylesheet" href="https://volbil.github.io/entypo/entypo.css">
+		<link rel="stylesheet" href="https://sugar.wtf/wizardry.min.css">
+		<link rel="stylesheet" href="https://sugar.wtf/entypo/entypo.css">
 
-		<link rel="icon" type="image/png" href="https://microbitcoinorg.github.io/misc/favicon.ico">
+		<link rel="icon" type="image/png" href="https://sugarchain.org/logo.png">
 		<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
 		
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -17,6 +17,7 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/gh/cozmo/jsQR@master/dist/jsQR.js"></script>
 		<script src="multilang.js"></script>
 
 		<script>
@@ -93,16 +94,23 @@
 			.balance-small {
 				font-size: 15px;
 			}
+			.send-balance-fix {
+				padding: 0px 0px 8px 0px;
+				display: inline-block;
+			}
+			.break-word {
+				word-wrap: break-word;
+			}
 		</style>
 		<title>Wallet</title>
-		<meta name="description" content="MicroBitcoin Web Wallet">
+		<meta name="description" content="Sugarchain Web Wallet">
 	</head>
 	<body>
 		<!-- Navbar -->
 		<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
 			<div class="container">
 				<a href="#" class="navbar-brand">
-					<svg id="logo" style="max-width: 15px;margin-top: -5px;margin-right: 5px;" data-name="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 290.82 480"><defs><style>.cls-1{fill:#fff;}</style></defs><title>mbc_whiteicon</title><path class="cls-1" d="M110.59,412.2q0-154.62,0-309.25c.08-.4.19-.8.24-1.2.26-1.9.37-3.82.78-5.68C115.3,79.56,128.94,68,146.06,66.85c2.9-.19,5.82,0,8.88,0V65q0-11.51,0-23a21,21,0,0,1,2.72-10.45c4.19-7.45,10.78-11.77,18.8-14.11,2.28-.66,4.65-1,7-1.48h7.2a4.15,4.15,0,0,0,.79.25,34.53,34.53,0,0,1,13,4c9.41,5.18,15,12.69,14.72,23.91-.18,7,0,14,0,21v1.48h36.33V64.93q0-11.44,0-22.88a20.7,20.7,0,0,1,2.25-9.56c4.08-8,10.9-12.53,19.27-15,2.28-.67,4.66-1,7-1.47h7.2a5.89,5.89,0,0,0,.93.26,34.58,34.58,0,0,1,12.71,3.87c9.59,5.23,15.17,12.89,14.86,24.28-.21,7.57,0,15.15-.06,22.73,0,1,.23,1.44,1.34,1.68,27.3,5.89,48.79,20.41,64.25,43.67a96.28,96.28,0,0,1,15.73,45c.15,1.6.35,3.2.53,4.8v9.21a7,7,0,0,0-.23.94c-.43,3.81-.58,7.67-1.3,11.42-6.09,32.14-23.7,55.91-52.3,71.64-1.33.73-2.7,1.38-4.19,2.14.38.22.57.35.78.45a99.39,99.39,0,0,1,34.49,27,98.22,98.22,0,0,1,22.22,53.8c.15,1.6.35,3.19.53,4.79v9.21a5,5,0,0,0-.23.94,94.9,94.9,0,0,1-11,40.3c-15,28-38.19,45.41-69.22,52.3-1.05.23-1.4.56-1.39,1.65,0,7,0,14,0,21a23.11,23.11,0,0,1-7,17c-12,12.2-34,13.36-47.5,2.52-6.43-5.17-10-11.71-9.74-20.16.16-6.09,0-12.19,0-18.28v-1.55H219.1v1.65c0,6.29-.05,12.57,0,18.86a23.08,23.08,0,0,1-7.45,17.46c-11.8,11.42-32.44,12.69-46,2.81-7.11-5.19-11-12-10.8-21.09.15-6,0-12.09,0-18.14v-1.64h-7.19a37.26,37.26,0,0,1-36.31-30.21C111.07,416.26,110.87,414.23,110.59,412.2ZM234.1,196.25h62.18c7.14,0,14.3-.17,21.43.05a31.46,31.46,0,1,0,1.48-62.89l-41.58,0H229.15l-48,0c-22.34,0-37.63,22.6-29.06,43.23,2,4.93,4.92,9.52,7.46,14.24,3.92,7.25,7.88,14.47,11.83,21.7l14,25.73q5.51,10.09,11,20.2a1.55,1.55,0,0,1,0,1.26q-5.52,10.08-11.11,20.13L169.4,308.47c-4.71,8.51-9.33,17.06-14.14,25.52-3.28,5.77-5.92,11.65-6.13,18.47-.48,15.47,11,29.58,26.26,31.76,3.6.51,7.34.06,11,.06H287.54c8.68,0,17.36,0,26,0,4.5,0,9,.34,13.47-.7a31.45,31.45,0,0,0,24.24-35.62c-2-14.28-14.62-25.83-29-26.44-5.83-.25-11.68-.13-17.53-.12-7.23,0-14.46.08-21.69.08s-14.74-.08-22.12-.08-14.45.06-21.68.09H234.2c.43-.83.72-1.42,1-2l10.44-18.86,14.06-25.4c5.31-9.59,5.88-19.41,1.25-29.38-1.77-3.82-3.94-7.45-6-11.15q-7.9-14.51-15.82-29C237.54,202.61,235.88,199.54,234.1,196.25Z" transform="translate(-110.59 -16)"/></svg>
+					<svg id="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2334.36 2334.36"><defs><style>.cls-1{fill:#fff;}</style></defs><title>sug white</title><path class="cls-1" d="M1049.8,669.06l-545,519.05-.14,2,470.65,32.47,589-603.9Zm566.57-103.61,432,748.49-543.06,672L936.07,1837.25,443.65,1185.86l593.23-565,39.08-3.83,540.27-53Z" transform="translate(-83.54 -82.07)"/><path class="cls-1" d="M1250.72,82.07c644.61,0,1167.18,522.56,1167.18,1167.18S1895.33,2416.43,1250.72,2416.43,83.54,1893.86,83.54,1249.25,606.1,82.07,1250.72,82.07ZM2301.18,1366c64.46-580.16-353.59-1102.72-933.74-1167.18S264.72,552.36,200.26,1132.52,553.85,2235.25,1134,2299.7,2236.72,1946.11,2301.18,1366Z" transform="translate(-83.54 -82.07)"/></svg>
 					<b tkey="wallet-title"></b>
 				</a>
 				<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -195,7 +203,7 @@
 									<a class="nav-link tab-link" data-tab-name="wallet-send" data-tab-family="wallet-block" href="#" tkey="send"></a>
 								</li>
 								<li class="nav-item mr-2">
-									<a id="history-link" class="nav-link" target="_blank" href="https://microbitcoinorg.github.io/explorer/#/address/" tkey="history"></a>
+									<a id="history-link" class="nav-link" target="_blank" href="https://sugar.wtf/#/address/" tkey="history"></a>
 								</li>
 								<li class="nav-item">
 									<a class="nav-link tab-link" data-tab-name="wallet-keys" data-tab-family="wallet-block" href="#" tkey="keys"></a>
@@ -215,23 +223,33 @@
 							</div>
 
 							<div id="wallet-send" class="tab-item d-none" data-tab="wallet-send">
-								<p>
-									<span>
+								<div class="mb-2">
+									<span class="">
 										<span tkey="available-balance"></span>
 										<b class="wallet-balance balance-small c-pointer">
 											<span class="amount"></span>
 											<span class="ticker" tkey="loading"></span>
 										</b>
 									</span>
-									<a href="#" id="send-reset" style="float: right;" tkey="reset"></a>
-								</p>
+
+									<div class="float-md-right">
+										<a href="#" id="send-qr" class="text-dark pr-1">
+											<span tkey="scan-qr"></span>
+											<span class="entypo camera"></span>
+										</a>
+										<a href="#" id="send-reset" class="text-dark">
+											<span tkey="reset"></span>
+											<span class="entypo cycle"></span>
+										</a>
+									</div>
+								</div>
 								
 								<div id="send-outputs">
 									<div class="input-group send-outputs-item mb-2">
 										<input name="send-address" class="form-control" type="text" value="" tkey="enter-address">
 										<input name="send-ammount" class="form-control" type="text" value="" tkey="amount">
 										<div class="input-group-append">
-											<button id="add-output" class="btn btn-success">
+											<button id="add-output" class="btn btn-outline-dark">
 												<span class="entypo plus"></span>
 											</button>
 										</div>
@@ -412,6 +430,25 @@
 			</div>
 		</div>
 
+		<div id="scan-modal" class="modal" tabindex="-1" role="dialog">
+			<div class="modal-dialog modal-md" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" tkey="scan-modal-title"></h5>
+						<button id="scan-close" type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div id="loading-message">
+							
+						</div>
+						<canvas id="scan-canvas" hidden class="w-100"></canvas>
+					</div>
+				</div>
+			</div>
+		</div>
+
 		<div class="disclaimer mb-3">
 			<div class="container text-center">
 				<small class="text-muted" style="max-width: 1100px;" tkey="disclaimer"></small>
@@ -421,45 +458,67 @@
 		<!-- Footer :3 -->
 		<footer class="mb-3">
 			<div class="container text-center">
-				Made with <span class="entypo heart text-danger"></span> by <a target="_blank" href="https://github.com/volbil/web-wallet">Volbil</a>
+				Made with <span class="entypo heart text-danger"></span> by <a target="_blank" href="https://github.com/sugarchain-project/web-wallet">Volbil</a>
 			</div>
 		</footer>
 
 		<!-- All magic is here :D -->
 		<script>
 			// Config
+			var stream = undefined
 			var walletTimer = false
-			var walletVersion = '0.4'
+			var walletVersion = '0.5'
 			var networkConfigs = {
-				'MBC': {
-					'uri': 'microbitcoin:',
-					'title': 'MicroBitcoin Wallet',
-					'name': 'Main Network (MBC)',
-					'api': 'https://api.mbc.wiki',
-					'ticker': 'MBC',
-					'decimals': 4,
-					'fee': 0.001,
+				'SUGAR': {
+					'uri': 'sugarchain:',
+					'title': 'Sugar Wallet',
+					'name': 'Main Network (SUGAR)',
+					// 'api': 'https://api.sugarchain.org',
+					'api': 'https://api.sugar.wtf',
+					'ticker': 'SUGAR',
+					'decimals': 8,
+					'fee': 0.00001,
 					'network': {
-						'messagePrefix': '\x19Bitcoin Signed Message:\n',
+						'messagePrefix': '\x19Sugarchain Signed Message:\n',
 						'bip32': {
 							'public': 0x0488b21e,
 							'private': 0x0488ade4
 						},
-						'bech32': 'mbc',
-						'pubKeyHash': 0x1A,
-						'scriptHash': 0x33,
+						'bech32': 'sugar',
+						'pubKeyHash': 0x3F,
+						'scriptHash': 0x7D,
 						'wif': 0x80
 					}
-				}
+				},
+				// 'TUGAR': {
+				// 	'uri': 'sugarchain:',
+				// 	'title': 'Sugar Wallet',
+				// 	'name': 'Test Network (TUGAR)',
+				// 	'api': 'https://api-testnet.sugarchain.org',
+				// 	'ticker': 'TUGAR',
+				// 	'decimals': 8,
+				// 	'fee': 0.00001,
+				// 	'network': {
+				// 		'messagePrefix': '\x19Sugarchain Signed Message:\n',
+				// 		'bip32': {
+				// 			'public': 0x0488b21e,
+				// 			'private': 0x0488ade4
+				// 		},
+				// 		'bech32': 'tugar',
+				// 		'pubKeyHash': 0x42,
+				// 		'scriptHash': 0x80,
+				// 		'wif': 0xEF
+				// 	}
+				// }
 			}
 
 			// Explorer links
 			var blockExplorer = {
 				'address': function(address) {
-					return 'https://microbitcoinorg.github.io/explorer/#/address/' + address + '/' + getConfig()['ticker']
+					return 'https://sugar.wtf/#/address/' + address + '/' + getConfig()['ticker']
 				},
 				'tx': function(tx) {
-					return 'https://microbitcoinorg.github.io/explorer/#/transaction/' + tx + '/' + getConfig()['ticker']
+					return 'https://sugar.wtf/#/transaction/' + tx + '/' + getConfig()['ticker']
 				}
 			}
 
@@ -489,43 +548,52 @@
 			}
 
 			// Messages
-			var messages = {
-				'settings': {
-					'typeSwitched': function (type) {
-						return getText('address-type-changed') + ' <b>' + type + '</b>'
+			var messages = initMessages()
+
+			function initMessages() {
+				return {
+					'settings': {
+						'typeSwitched': function (type) {
+							return getText('address-type-changed') + ' <b>' + type + '</b>'
+						},
+						'backendSwitched': function (url) {
+							returngetText('backend-switched') +  ' <b>' + url + '</b>'
+						},
+						'backendNotWorking': function (url) {
+							return '<b>' + url + '</b> ' + getText('backend-down')
+						}
 					},
-					'backendSwitched': function (url) {
-						returngetText('backend-switched') +  ' <b>' + url + '</b>'
+					'error': {
+						'bad-utxo': getText('bad-utxo'),
+						'balance-load-failed': getText('balance-load-failed'),
+						'not-enough-funds': getText('not-enough-funds'),
+						'not-valid-address': getText('not-valid-address'),
+						'not-valid-amount': getText('not-valid-amount'),
+						'not-valid-fee': getText('not-valid-fee'),
+						'bad-priv-key': getText('bad-priv-key'),
+						'not-enough-utxo': getText('not-enough-utxo'),
+						'broadcast-failed': getText('broadcast-failed'),
+						'pass-not-match': getText('pass-not-match'),
+						'pass-too-short': getText('pass-too-short'),
+						'bad-email': getText('bad-email'),
+						'small-fee': getText('small-fee') + ' ' + getConfig()['fee'] + ' ' + getConfig()['ticker'] + '!'
 					},
-					'backendNotWorking': function (url) {
-						return '<b>' + url + '</b> ' + getText('backend-down')
+					'tx': {
+						'loading-utxo': getText('loading-utxo'),
+						'generating': getText('transaction-creation'),
+						'success': getText('transaction-broadcasted'),
+					},
+					'title': {
+						'sure': getText('send-sure'),
+						'processing': getText('send-processing'),
+						'success': getText('success'),
+						'failed': getText('failed')
+					},
+					'misc': {
+						'outputAdded': function (address) {
+							return getText('address') + ' ' + '<b class="break-word">' + address + '</b>' + ' ' + getText('outputs-added')
+						}
 					}
-				},
-				'error': {
-					'bad-utxo': getText('bad-utxo'),
-					'balance-load-failed': getText('balance-load-failed'),
-					'not-enough-funds': getText('not-enough-funds'),
-					'not-valid-address': getText('not-valid-address'),
-					'not-valid-amount': getText('not-valid-amount'),
-					'not-valid-fee': getText('not-valid-fee'),
-					'bad-priv-key': getText('bad-priv-key'),
-					'not-enough-utxo': getText('not-enough-utxo'),
-					'broadcast-failed': getText('broadcast-failed'),
-					'pass-not-match': getText('pass-not-match'),
-					'pass-too-short': getText('pass-too-short'),
-					'bad-email': getText('bad-email'),
-					'small-fee': getText('small-fee') + ' ' + getConfig()['fee'] + ' ' + getConfig()['ticker'] + '!'
-				},
-				'tx': {
-					'loading-utxo': getText('loading-utxo'),
-					'generating': getText('transaction-creation'),
-					'success': getText('transaction-broadcasted'),
-				},
-				'title': {
-					'sure': getText('send-sure'),
-					'processing': getText('send-processing'),
-					'success': getText('success'),
-					'failed': getText('failed')
 				}
 			}
 
@@ -560,6 +628,7 @@
 					}
 				})
 
+				messages = initMessages()
 				setTitle(getText('wallet-settings'))
 				return language
 			}
@@ -596,6 +665,7 @@
 					setCookie('network', network, 60)
 					closeWallet()
 					displayNetworks()
+					switchBackend(networkConfigs[network]['api'])
 				}
 
 				switchPage(page)
@@ -616,7 +686,7 @@
 			function getAddressType() {
 				var type = readCookie('type')
 				if (type == null || !['bech32', 'segwit', 'legacy'].includes(type)) {
-					setCookie('type', 'segwit', 60)
+					setCookie('type', 'bech32', 60)
 					type = readCookie('type')
 				}
 
@@ -835,12 +905,11 @@
 				$('.wallet-balance .ticker').text(getText('loading'))
 
 				addressBalance(globalData.address).then(function(data) {
-					console.log(data)
 					if (data['error'] == undefined) {
 						globalData.balance = data.result.balance
 						balance = amountFormat(globalData.balance)
 					} else {
-						showMessage(messages.error['balance-load-failed'])
+						showMessage(messages.errors['balance-load-failed'])
 					}
 
 					$('.wallet-balance .amount').text(balance)
@@ -917,6 +986,80 @@
 
 				globalData.tx.amount = amountFormat(amount, true)
 				globalData.tx.fee = amountFormat(($('#send-fee').val() != '') ? $('#send-fee').val() : globalData.rfee, true)
+			}
+
+			function stopStream() {
+				if (stream != undefined) {
+					stream.getTracks().forEach(function(track) {
+						track.stop()
+					})
+				}
+			}
+
+			function startStream() {
+				var canvasElement = document.getElementById('scan-canvas')
+				var canvas = canvasElement.getContext('2d')
+				var video = document.createElement('video')
+				canvasElement.hidden = true
+
+				$('#loading-message').text(getText('webcam-message'))
+				$('#loading-message').removeClass('d-none')
+
+				// Use facingMode: environment to attemt to get the front camera on phones
+				navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } }).then(function(gstream) {
+					stream = gstream
+					video.srcObject = stream
+					video.setAttribute("playsinline", true)
+					video.play()
+					requestAnimationFrame(tick)
+				})
+
+				function tick() {
+					$('#loading-message').text(getText('webcam-loading'))
+					var stop = false
+					if (video.readyState === video.HAVE_ENOUGH_DATA) {
+						$('#loading-message').addClass('d-none')
+						canvasElement.hidden = false
+
+						canvasElement.height = video.videoHeight
+						canvasElement.width = video.videoWidth
+						canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height)
+						var imageData = canvas.getImageData(0, 0, canvasElement.width, canvasElement.height)
+						var code = jsQR(imageData.data, imageData.width, imageData.height, {
+							inversionAttempts: "dontInvert",
+						})
+						
+						if (code) {
+							var address = code.data
+							if (address.startsWith(getConfig()['uri'])) {
+								address = address.replace(getConfig()['uri'], '')
+							}
+
+							if (validateAddress(address)) {
+								if ($('#send-outputs input[name="send-address"]').last().val() != '') {
+									$('#add-output').click()
+								}
+
+								$('#send-outputs input[name="send-address"]').last().val(address)
+								showMessage(messages.misc.outputAdded(address))
+								stop = true
+							}
+						}
+					}
+
+					if (!stop) {
+						requestAnimationFrame(tick)
+					} else {
+						$('#scan-modal').modal('toggle')
+						stopStream()
+					}
+				}
+			}
+
+			function showScanModal() {
+				// $('#scan-canvas').addClass('d-none')
+				$('#scan-modal').modal('toggle')
+				startStream()
 			}
 
 			function sendTransaction() {
@@ -1152,6 +1295,13 @@
 				globalData.resetTx()
 			}
 
+			function initWallet() {
+				// Open only if key is valid
+				if (globalData.keys != undefined) {
+					openWallet(globalData.keys)
+				}
+			}
+
 			// All starts here
 			$(document).ready(function() {
 				initLang()
@@ -1236,11 +1386,8 @@
 							showMessage(messages.error['bad-priv-key'])
 						}
 
-						if (globalData.keys != undefined) {
-							// Open only if key is valid
-							$('#passphrase').val('')
-							openWallet(globalData.keys)
-						}
+						$('#passphrase').val('')
+						initWallet()
 					} else {
 						showMessage(messages.error['bad-priv-key'])
 					}
@@ -1322,7 +1469,7 @@
 							<input name="send-address" class="form-control" placeholder="${getText('enter-address')}" type="text">
 							<input name="send-ammount" class="form-control" placeholder="${getText('amount')}" type="text">
 							<div class="input-group-append">
-								<button class="btn btn-danger remove-additional-output" type="submit">
+								<button class="btn btn-outline-danger remove-additional-output" type="submit">
 									<span class="entypo minus"></span>
 								</button>
 							</div>
@@ -1341,6 +1488,12 @@
 					e.preventDefault()
 				})
 
+				// Reset send form
+				$('#send-qr').click(function(e) {
+					showScanModal()
+					e.preventDefault()
+				})
+
 				// Footer button which close wallet
 				$('#footer-close').click(function(e) {
 					closeWallet()
@@ -1351,9 +1504,7 @@
 				$('#address-type-select select').on('change', function() {
 					switchAddressType($(this).val())
 					showMessage(messages.settings.typeSwitched($(this).val()))
-					if (globalData.keys != undefined) {
-						openWallet(globalData.keys)
-					}
+					initWallet()
 				})
 
 				// Change wallet backend
@@ -1365,6 +1516,7 @@
 				$('#wallet-language-select select').on('change', function() {
 					setCookie('language', $('#wallet-language-select select').val(), 60)
 					initLang()
+					initWallet()
 				})
 
 				// Set wallet recomended fee
@@ -1374,6 +1526,10 @@
 					} else {
 						globalData.rfee = getConfig()['fee']
 					}
+				})
+
+				$('#scan-modal').on('hide.bs.modal', function (e) {
+					stopStream()
 				})
 			})
 		</script>
